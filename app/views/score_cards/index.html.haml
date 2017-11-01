@@ -1,0 +1,21 @@
+%h1 Listing score_cards
+
+%table
+  %thead
+    %tr
+      %th User
+      %th
+      %th
+      %th
+
+  %tbody
+    - @score_cards.each do |score_card|
+      %tr
+        %td= score_card.user_id
+        %td= link_to 'Show', score_card
+        %td= link_to 'Edit', edit_score_card_path(score_card)
+        %td= link_to 'Destroy', score_card, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Score card', new_score_card_path

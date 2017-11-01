@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :companies do
+    resources :departments
+  end
+
+  resources :positions
+  resources :applicants
+  resources :score_cards
+  resources :attributes
+
+  root to: 'companies#index'
 end
