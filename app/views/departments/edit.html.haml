@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @department
+= link_to 'Show', company_department_path(@company, @department)
 \|
-= link_to 'Back', departments_path
+= link_to 'Back', company_departments_path(@company)

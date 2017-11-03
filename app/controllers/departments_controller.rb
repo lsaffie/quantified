@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
+  before_action :set_company
   before_action :set_department, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /departments
   # GET /departments.json
@@ -26,10 +26,11 @@ class DepartmentsController < ApplicationController
   # POST /departments.json
   def create
     @department = Department.new(department_params)
+    @department = @company.departments.create(department_params)
 
     respond_to do |format|
-      if @department.save
-        format.html { redirect_to @department, notice: 'Department was successfully created.' }
+      if @department.valid?
+        format.html { redirect_to company_department_path(@company, @department), notice: 'Department was successfully created.' }
         format.json { render :show, status: :created, location: @department }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class DepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @department.update(department_params)
-        format.html { redirect_to @department, notice: 'Department was successfully updated.' }
+        format.html { redirect_to company_department_path(@company, @department), notice: 'Department was successfully updated.' }
         format.json { render :show, status: :ok, location: @department }
       else
         format.html { render :edit }
@@ -65,7 +66,7 @@ class DepartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_department
-      @department = Department.find(params[:id])
+      @department = @company.departments.find(params[:id])
     end
 
     def set_company

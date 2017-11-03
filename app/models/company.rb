@@ -2,5 +2,14 @@ class Company < ApplicationRecord
 
   has_many :departments
 
-  #TODO: create default department
+  after_create :seed_default_dependencies
+
+  private
+  def seed_default_dependencies
+    department = departments.create(name: 'default')
+    position   = department.positions.create(title: 'default')
+    applicant  = position.applicants
+    #applicant.scorecards.create
+    #attributes = applicant.attribu
+  end
 end
