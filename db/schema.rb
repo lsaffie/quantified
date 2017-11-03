@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20171101205556) do
   create_table "applicants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171101205556) do
   create_table "attributes", force: :cascade do |t|
     t.string "name"
     t.integer "weight"
-    t.integer "score_card_id"
+    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171101205556) do
     t.datetime "completed_at"
     t.integer "score"
     t.integer "weighted_average"
+    t.integer "position_id"
     t.integer "applicant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

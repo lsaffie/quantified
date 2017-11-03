@@ -8,8 +8,7 @@ class Company < ApplicationRecord
   def seed_default_dependencies
     department = departments.create(name: 'default')
     position   = department.positions.create(title: 'default')
-    applicant  = position.applicants
-    #applicant.scorecards.create
-    #attributes = applicant.attribu
+    score_card = position.score_cards.create
+    applicant  = score_card.applicant.build
   end
 end
