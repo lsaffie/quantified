@@ -9,5 +9,15 @@
   .field
     = f.label :title
     = f.text_field :title
+
+  %p
+    Scoring Attributes
+    = f.fields_for :position_attributes do |attr_form|
+      .field
+        = attr_form.label :name
+        = attr_form.text_field :name
+      .field
+        = attr_form.label :weight
+        = attr_form.text_field :weight
   .actions
     = f.submit 'Save'

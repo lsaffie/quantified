@@ -1,7 +1,9 @@
 class Position < ApplicationRecord
   validates :title, presence: true
 
-  has_many   :score_cards
-  has_many   :applicants, through: :score_cards
-  belongs_to :department
+  has_many   :applicants
+  has_many   :position_attributes, inverse_of: :position
+  belongs_to :department, optional: true
+
+  accepts_nested_attributes_for :position_attributes
 end

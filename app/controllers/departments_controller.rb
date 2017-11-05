@@ -25,7 +25,6 @@ class DepartmentsController < ApplicationController
   # POST /departments
   # POST /departments.json
   def create
-    @department = Department.new(department_params)
     @department = @company.departments.create(department_params)
 
     respond_to do |format|

@@ -1,8 +1,15 @@
 %p#notice= notice
 
 %p
-  %b User:
-  = @score_card.user_id
+  %b First Name:
+  = @score_card.first_name
+%p
+  %b Scoring Attributes
+  - @score_card.scores.each do |scores|
+    = score.position_attribute.name
+    = score.rating
+
+
 
 = link_to 'Edit', edit_score_card_path(@score_card)
 \|

@@ -10,18 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101205556) do
+ActiveRecord::Schema.define(version: 20171105215744) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "attributes", force: :cascade do |t|
-    t.string "name"
-    t.integer "weight"
     t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +29,14 @@ ActiveRecord::Schema.define(version: 20171101205556) do
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "position_attributes", force: :cascade do |t|
+    t.string "name"
+    t.float "weight"
+    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,10 +56,15 @@ ActiveRecord::Schema.define(version: 20171101205556) do
     t.datetime "completed_at"
     t.integer "score"
     t.integer "weighted_average"
-    t.integer "position_id"
     t.integer "applicant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.float "score"
+    t.integer "position_attribute_id"
+    t.integer "score_card_id"
   end
 
 end

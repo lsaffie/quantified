@@ -1,10 +1,11 @@
 class ApplicantsController < ApplicationController
+  before_action :set_position
   before_action :set_applicant, only: [:show, :edit, :update, :destroy]
 
   # GET /applicants
   # GET /applicants.json
   def index
-    @applicants = Applicant.all
+    @applicants = @position.applicants
   end
 
   # GET /applicants/1
@@ -14,7 +15,7 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/new
   def new
-    @applicant = Applicant.new
+    @applicant = @position.applicants.new
   end
 
   # GET /applicants/1/edit
@@ -24,7 +25,7 @@ class ApplicantsController < ApplicationController
   # POST /applicants
   # POST /applicants.json
   def create
-    @applicant = Applicant.new(applicant_params)
+    @applicant = @position.applicants.new(applicant_params)
 
     respond_to do |format|
       if @applicant.save
@@ -64,7 +65,11 @@ class ApplicantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_applicant
-      @applicant = Applicant.find(params[:id])
+      @applicant = @position.applicants.find(params[:id])
+    end
+
+    def set_position
+      @position = Position.find(params[:position_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -3,7 +3,14 @@
 %p
   %b First name:
   = @applicant.first_name
+%p
+  %b Last name:
+  = @applicant.last_name
 
-= link_to 'Edit', edit_applicant_path(@applicant)
+= link_to 'Edit', edit_position_applicant_path(@position, @applicant)
 \|
-= link_to 'Back', applicants_path
+= link_to 'Back', position_applicants_path(@position)
+\|
+= link_to 'score_cards', applicant_score_cards_path(@applicant)
+\|
+= link_to 'New Score Card', new_applicant_score_card_path(@applicant)

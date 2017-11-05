@@ -1,10 +1,10 @@
-class AttributesController < ApplicationController
+class PositionAttributesController < ApplicationController
   before_action :set_attribute, only: [:show, :edit, :update, :destroy]
 
   # GET /attributes
   # GET /attributes.json
   def index
-    @attributes = Attribute.all
+    @attributes = PositionAttribute.all
   end
 
   # GET /attributes/1
@@ -14,7 +14,7 @@ class AttributesController < ApplicationController
 
   # GET /attributes/new
   def new
-    @attribute = Attribute.new
+    @attribute = PositionAttribute.new
   end
 
   # GET /attributes/1/edit
@@ -24,11 +24,11 @@ class AttributesController < ApplicationController
   # POST /attributes
   # POST /attributes.json
   def create
-    @attribute = Attribute.new(attribute_params)
+    @attribute = PositionAttribute.new(attribute_params)
 
     respond_to do |format|
       if @attribute.save
-        format.html { redirect_to @attribute, notice: 'Attribute was successfully created.' }
+        format.html { redirect_to @attribute, notice: 'PositionAttribute was successfully created.' }
         format.json { render :show, status: :created, location: @attribute }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AttributesController < ApplicationController
   def update
     respond_to do |format|
       if @attribute.update(attribute_params)
-        format.html { redirect_to @attribute, notice: 'Attribute was successfully updated.' }
+        format.html { redirect_to @attribute, notice: 'PositionAttribute was successfully updated.' }
         format.json { render :show, status: :ok, location: @attribute }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class AttributesController < ApplicationController
   def destroy
     @attribute.destroy
     respond_to do |format|
-      format.html { redirect_to attributes_url, notice: 'Attribute was successfully destroyed.' }
+      format.html { redirect_to attributes_url, notice: 'PositionAttribute was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +64,7 @@ class AttributesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attribute
-      @attribute = Attribute.find(params[:id])
+      @attribute = PositionAttribute.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -15,6 +15,7 @@ class PositionsController < ApplicationController
   # GET /positions/new
   def new
     @position = Position.new
+    3.times { @position.position_attributes.build }
   end
 
   # GET /positions/1/edit
@@ -69,6 +70,6 @@ class PositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_params
-      params.require(:position).permit(:title)
+      params.require(:position).permit(:title, position_attributes_attributes: [:name, :weight])
     end
 end

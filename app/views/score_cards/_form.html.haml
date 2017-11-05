@@ -1,4 +1,4 @@
-= form_for @score_card do |f|
+= form_for [@applicant, @score_card] do |f|
   - if @score_card.errors.any?
     #error_explanation
       %h2= "#{pluralize(@score_card.errors.count, "error")} prohibited this score_card from being saved:"
@@ -6,8 +6,12 @@
         - @score_card.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
+  = f.fields_for :scores do |score_form|
+    = score_form.label :position_attribute_id
+    = score_form.text_field :position_attribute_id
+
+    = score_form.label :score
+    = score_form.text_field :score
+
   .actions
     = f.submit 'Save'

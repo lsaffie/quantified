@@ -1,20 +1,28 @@
 class ScoreCardsController < ApplicationController
+  before_action :set_applicant
   before_action :set_score_card, only: [:show, :edit, :update, :destroy]
 
   # GET /score_cards
   # GET /score_cards.json
   def index
-    @score_cards = ScoreCard.all
+    @score_cards = @applicant.score_cards
   end
 
   # GET /score_cards/1
   # GET /score_cards/1.json
   def show
+    @score_card = @applicant.score_cards.find(params[:id])
+    @position_attributes = PositionAttribute.where(position_id: @score_card.position_id)
   end
 
   # GET /score_cards/new
   def new
-    @score_card = ScoreCard.new
+    @score_card = @applicant.score_cards.build
+    @position_attributes = @applicant.position.position_attributes
+
+    @position_attributes.each do |attr|
+      @score_card.scores.build(position_attribute_id: attr.id)
+    end
   end
 
   # GET /score_cards/1/edit
@@ -24,11 +32,11 @@ class ScoreCardsController < ApplicationController
   # POST /score_cards
   # POST /score_cards.json
   def create
-    @score_card = ScoreCard.new(score_card_params)
+    @score_card = @applicant.score_cards.new(score_card_params)
 
     respond_to do |format|
       if @score_card.save
-        format.html { redirect_to @score_card, notice: 'Score card was successfully created.' }
+        format.html { redirect_to applicant_score_cards_path(@applicant), notice: 'Score card was successfully created.' }
         format.json { render :show, status: :created, location: @score_card }
       else
         format.html { render :new }
@@ -67,8 +75,12 @@ class ScoreCardsController < ApplicationController
       @score_card = ScoreCard.find(params[:id])
     end
 
+    def set_applicant
+      @applicant = Applicant.find(params[:applicant_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_card_params
-      params.require(:score_card).permit(:user_id)
+      params.require(:score_card).permit(:score, scores_attributes: [:position_attribute_id, :score])
     end
 end
