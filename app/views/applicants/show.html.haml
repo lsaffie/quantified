@@ -6,6 +6,9 @@
 %p
   %b Last name:
   = @applicant.last_name
+%p
+  %b Avg score:
+  = @applicant.avg_score
 
 = link_to 'Edit', edit_position_applicant_path(@position, @applicant)
 \|

@@ -7,6 +7,7 @@ class CreateScoreCards < ActiveRecord::Migration[5.1]
       t.integer  :weighted_average
 
       t.integer  :applicant_id
+
       t.timestamps
     end
   end
