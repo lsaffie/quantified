@@ -5,9 +5,9 @@
   = @score_card.first_name
 %p
   %b Scoring Attributes
-  - @score_card.scores.each do |scores|
+  - @score_card.scores.each do |score|
     = score.position_attribute.name
-    = score.rating
+    = score.score
 
 
 
