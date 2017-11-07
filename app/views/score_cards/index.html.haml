@@ -6,19 +6,13 @@
       %th first name
       %th last name
       %th score
-      %th
-      %th
-      %th
 
   %tbody
     - @score_cards.each do |score_card|
       %tr
-        %td= score_card.applicant.first_name
+        %td= link_to score_card.applicant.first_name, applicant_score_card_path(@applicant, score_card)
         %td= score_card.applicant.last_name
         %td= score_card.score
-        %td= link_to 'Show', applicant_score_card_path(@applicant, score_card)
-        %td= link_to 'Edit', edit_score_card_path(score_card)
-        %td= link_to 'Destroy', score_card, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

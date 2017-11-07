@@ -4,14 +4,19 @@
   %b Title:
   = @position.title
 
-- @position.position_attributes.each do |position_attribute|
-  = position_attribute.name
-  = position_attribute.weight
+%table
+  %thead
+    %th Name
+    %th Weight
+  %tbody
+    - @position.position_attributes.each do |position_attribute|
+
+      %tr
+        %td
+          = position_attribute.name
+        %td
+          = position_attribute.weight
 
 %p
 
-= link_to 'Edit', edit_position_path(@position)
-\|
-= link_to 'Back', positions_path
-\|
 = link_to 'Applicants', position_applicants_path(@position)

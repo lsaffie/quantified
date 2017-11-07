@@ -11,11 +11,9 @@ Rails.application.routes.draw do
     resources :score_cards
   end
 
-  resources :departments
-  resources :positions
-  resources :applicants
-  resources :score_cards
-  resources :attributes
+  resources :score_cards do
+    resources :attributes
+  end
 
   root to: 'companies#index'
 end

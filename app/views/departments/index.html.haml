@@ -11,11 +11,7 @@
   %tbody
     - @departments.each do |department|
       %tr
-        %td= department.name
-        %td= link_to 'Show', company_department_path(@company, department)
-        %td= link_to 'Edit', edit_company_department_path(@company, department)
-        %td= link_to 'Destroy', company_department_path(@company, department), method: :delete, data: { confirm: 'Are you sure?' }
-
+        %td= link_to department.name, company_department_path(@company, department)
 %br
 
 = link_to 'New Department', new_company_department_path(@company)

@@ -3,12 +3,18 @@
 %p
   %b First Name:
   = @score_card.first_name
-%p
-  %b Scoring Attributes
-  - @score_card.scores.each do |score|
-    = score.position_attribute.name
-    = score.score
 
-= link_to 'Edit', edit_score_card_path(@score_card)
-\|
-= link_to 'Back', score_cards_path
+
+%table
+  %thead
+    %tr
+      %th attribute name
+      %th weighted score
+  %tbody
+    - @score_card.scores.each do |score|
+      %tr
+        %td= score.position_attribute.name
+        %td= score.score
+
+Weighted Average
+= @score_card.score
