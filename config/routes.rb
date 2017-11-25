@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :companies do
     resources :departments
+    resources :positions
+    resources :applicants
+    resources :score_cards
   end
 
   resources :positions do

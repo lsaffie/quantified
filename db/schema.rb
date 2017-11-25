@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171105215744) do
     t.string "first_name"
     t.string "last_name"
     t.integer "position_id"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20171105215744) do
     t.integer "salary_range_low_bound"
     t.integer "salary_range_high_bound"
     t.integer "department_id"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

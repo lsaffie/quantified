@@ -4,6 +4,7 @@ class CreateApplicants < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :last_name
       t.integer :position_id
+      t.integer :company_id
 
       t.timestamps
     end

@@ -6,6 +6,7 @@ class CreatePositions < ActiveRecord::Migration[5.1]
       t.integer  :salary_range_low_bound
       t.integer  :salary_range_high_bound
       t.integer  :department_id
+      t.integer  :company_id
 
       t.timestamps
     end

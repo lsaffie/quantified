@@ -11,8 +11,8 @@
   %tbody
     - @positions.each do |position|
       %tr
-        %td= link_to position.title, position
+        %td= link_to position.title, company_position_path(@company, position)
 
 %br
 
-= link_to 'New Position', new_position_path
+= link_to 'New Position', new_company_position_path(@company)

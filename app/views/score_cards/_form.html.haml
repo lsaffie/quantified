@@ -7,10 +7,8 @@
           %li= message
 
   = f.fields_for :scores do |score_form|
-    = score_form.label :position_attribute_id
-    = score_form.text_field :position_attribute_id
-
-    = score_form.label :score
+    = score_form.hidden_field :position_attribute_id
+    = score_form.object.position_attribute.name
     = score_form.text_field :score
 
   .actions

@@ -9,7 +9,7 @@
   %tbody
     - @applicants.each do |applicant|
       %tr
-        %td= link_to applicant.first_name, position_applicant_path(@position, applicant)
+        %td= link_to applicant.first_name, company_applicant_path(@company, applicant)
         %td= applicant.avg_score
 
 %br
