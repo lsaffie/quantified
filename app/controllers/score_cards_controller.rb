@@ -50,7 +50,7 @@ class ScoreCardsController < ApplicationController
   def update
     respond_to do |format|
       if @score_card.update(score_card_params)
-        format.html { redirect_to @score_card, notice: 'Score card was successfully updated.' }
+        format.html { redirect_to applicant_score_card_path(@applicant, @score_card), notice: 'Score card was successfully updated.' }
         format.json { render :show, status: :ok, location: @score_card }
       else
         format.html { render :edit }
@@ -81,6 +81,6 @@ class ScoreCardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_card_params
-      params.require(:score_card).permit(:score, scores_attributes: [:position_attribute_id, :score])
+      params.require(:score_card).permit(:score, :notes, scores_attributes: [:id, :position_attribute_id, :score])
     end
 end

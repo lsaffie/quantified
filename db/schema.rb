@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20171105215744) do
     t.datetime "completed_at"
     t.integer "score"
     t.integer "weighted_average"
+    t.text "notes"
     t.integer "applicant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

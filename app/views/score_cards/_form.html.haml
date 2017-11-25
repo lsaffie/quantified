@@ -7,9 +7,16 @@
           %li= message
 
   = f.fields_for :scores do |score_form|
-    = score_form.hidden_field :position_attribute_id
-    = score_form.object.position_attribute.name
-    = score_form.text_field :score
+    .field
+      = score_form.hidden_field :position_attribute_id
+    .field
+      = score_form.object.position_attribute.name
+    .field
+      = score_form.text_field :score
+
+  .score_cards.notes.form
+    =f.label :notes
+    =f.text_area :notes
 
   .actions
     = f.submit 'Save'

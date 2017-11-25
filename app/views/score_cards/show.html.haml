@@ -16,5 +16,11 @@
         %td= score.position_attribute.name
         %td= score.score
 
+%h2
 Weighted Average
 = @score_card.score
+
+%h2
+Notes
+.score_cards.show
+  = @score_card.notes
