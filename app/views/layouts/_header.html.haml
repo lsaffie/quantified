@@ -1,0 +1,9 @@
+-if @company
+  %table
+    %tr
+      %td
+        = link_to 'Positions', company_positions_path(@company)
+      %td
+        = link_to 'Applicants', company_applicants_path(@company)
+      %td
+        = link_to 'Scorecards', company_score_cards_path(@company)
